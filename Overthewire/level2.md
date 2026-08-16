@@ -13,7 +13,9 @@ First, we will use
 ls -la
 ```
 to view all files in our current folder
+
 Then we will see a *filename starting with a dash*
+
 In order to read it, we'll either specify our current folder by 
 ```bash
 cat ./-
