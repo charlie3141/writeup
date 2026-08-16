@@ -2,7 +2,7 @@
 
 ## Overview
 
-### Category: pwn
+### Category: General skill
 
 ### Description:
 >The password for the next level is stored in the file data.txt next to the word millionth

@@ -2,7 +2,7 @@
 
 ## Overview
 
-### Category: pwn
+### Category: General skill
 
 ### Description:
 >The password for the next level is stored in a hidden file in the inhere directory.

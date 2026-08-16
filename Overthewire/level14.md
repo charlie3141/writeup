@@ -2,7 +2,7 @@
 
 ## Overview
 
-### Category: pwn
+### Category: General skill
 
 ### Description:
 >The password for the next level is stored in /etc/bandit_pass/bandit14 and can only be read by user bandit14. For this level, you don’t get the next password, but you get a private SSH key that can be used to log into the next level. Look at the commands that logged you into previous bandit levels, and find out how to use the key for this level.
@@ -23,7 +23,7 @@ root@DESKTOP-5UQIQJM:~# ls -la | grep -n "s.private"
 
 Then we connect to level 14 with the flag -i (identity file) for our new sshkey 
 ```bash
-root@DESKTOP-5UQIQJM:~# ssh -i s.private bandit14@bandit.labs.overthewire.org -p 2220
+root@DESKTOP-5UQIQJM:~# ssh -i ~/s.private bandit14@bandit.labs.overthewire.org -p 2220
 
                       This is an OverTheWire game server.
 ...

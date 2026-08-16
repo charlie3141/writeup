@@ -2,12 +2,12 @@
 
 ## Overview
 
-### Category: pwn
+### Category: General skill
 
 ### Description: 
 >The password for the next level is stored in a file called --spaces in this filename-- located in the home directory
 
-### Exploitation
+## Exploitation
 This filename begins with a dash, so we'll use *./* to specify our folder at the beginning. It also has spaces, so we'll put *\\* before the spaces to read the file
 ```bash
 cat ./--spaces\ in\ this\ filename--
