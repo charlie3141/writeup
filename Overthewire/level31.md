@@ -1,0 +1,21 @@
+# Overthewire - level 31
+
+## Overview
+
+### Category: General skill
+
+### Description:
+>There is a git repository at ssh://bandit30-git@bandit.labs.overthewire.org/home/bandit30-git/repo via the port 2220. The password for the user bandit30-git is the same as for the user bandit30.
+>From your local machine (not the OverTheWire machine!), clone the repository and find the password for the next level. This needs git installed locally on your machine.
+
+
+## Exploitation
+After cloning, navigating and trying out previous methods, this challenge require us to search the tag and then see what is it pointing toward
+```bash
+root@DESKTOP-5UQIQJM:~/repo# git tag
+secret
+root@DESKTOP-5UQIQJM:~/repo# git show secret
+```
+
+### Password
+82NkymblpGBYmIXG6ZQ8YldBYstHpfUf
