@@ -114,7 +114,7 @@ zeros : used to track where the number is
 
 remaindr : for when `d = c`
 
-Then we make a `query` function that will skip the chunk if the condition is met, or will break down the chunk if not. This will run in $\mathcal{O}(K \log_2 N)
+Then we make a `query` function that will skip the chunk if the condition is met, or will break down the chunk if not. This will run in $\mathcal{O}(K \log_2 N)$
 ```cpp
 void query(ull l,ull r){
     if (l==r) if (f(l)==l) {
@@ -128,6 +128,7 @@ void query(ull l,ull r){
 }
 ```
 The full code is below with an additional function to calculate the execution time 
+
 [Time: 34.8492 ms]
 ```cpp
 #include <bits/stdc++.h>
