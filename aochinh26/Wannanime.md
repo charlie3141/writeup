@@ -83,7 +83,7 @@ After we check app.py again to see how /admin work:
 >    return open(os.path.join('files/', filename),'rb').read()
 
 We have to put `?filename=something` in the url for the server to show us. After one quick test with `/etc/passwd`, we know it's an absolute path
-![path](./imagesab.png)
+![path](./images/ab.png)
 The `app/Dockerfile` will tell us where the flag is
 ```text
 ARG directory=/this_is_fake_directory_in_prod_this_is_random
@@ -94,7 +94,7 @@ The final payload is
 ```text
 http://127.0.0.1:5000/admin?filename=/this_is_fake_directory_in_prod_this_is_random/flag.txt
 ```
-![end](./imagespayl.png)
+![end](./images/payl.png)
 ### Flag
 flag{fake_flag}
 
