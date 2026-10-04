@@ -51,7 +51,7 @@ CREATE TABLE IF NOT EXISTS anime (
 We then see the users and the anime table. Because the first part of the SQL command reads all `5` attributes in the anime table, 
 >SELECT * FROM anime
 
-we have to add `null` attribute in our payload until it has `5` of it. Although it only print the `title` as the second attribute, we can put our desired output in the second attribute. Here's the crafted payload:
+we have to add `null` attribute in our payload until it has the same number of columns for `union` to work. Although it only print the `title` as the second attribute, we can put our desired output in the second attribute. Here's the crafted payload:
 ```text
  union select null,password,null,null,null from users-- \
 ```
